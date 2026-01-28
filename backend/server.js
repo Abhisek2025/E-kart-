@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 //middleware
 app.use(express.json());
+
 //user Api
 app.use('/api/v1/user', userRoute);
 
