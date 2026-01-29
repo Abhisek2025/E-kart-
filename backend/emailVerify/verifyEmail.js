@@ -6,17 +6,20 @@ export const verifyEmail = async (token, email) => {
   try {
     // 1️⃣ Create transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      family:4,
       auth: {
-        user: process.env.MAIL_USER, // sender email
-        pass: process.env.MAIL_PASS, // app password
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
       },
     });
 
     // 2️⃣ Email configuration
     const mailConfigurations = {
       from: process.env.MAIL_USER, // sender
-      to: email,                  // receiver
+      to: email, // receiver
       subject: "Email Verification",
 
       // Email body
@@ -37,7 +40,6 @@ Team`,
     await transporter.sendMail(mailConfigurations);
 
     console.log("✅ Verification email sent successfully");
-
   } catch (error) {
     // ❌ Do NOT crash server if email fails
     console.error("❌ Email sending failed:", error.message);
