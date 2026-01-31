@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Navbar from "./pages/Navbar";
+import Navbar from "./components/ui/Navbar";
 import Verify from "./pages/Verify";
 import VerifyEmail from "./pages/VerifyEmail";
 
